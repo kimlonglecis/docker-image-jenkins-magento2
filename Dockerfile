@@ -15,8 +15,10 @@ RUN requirements="php-zip php-gd php-curl php-intl php-xml php-mbstring php-soap
     apt autoclean && \
     apt install -y $requirements && \
     rm -rf /var/lib/apt/lists/*
+ENTRYPOINT service ssh restart && bash
 USER jenkins
 WORKDIR /var/jenkins_home/
+
 
 ## Docker image name:                           jenkins-php7-magento2
 ## Docker Hub Image Name:                       devtutspace/jenkins-php7-magento2
@@ -24,3 +26,4 @@ WORKDIR /var/jenkins_home/
 ## Docker Image Build No Cache command:         docker build --no-cache -t jenkins-php7-magento2 ./
 ## Docker Image Tag command:                    docker tag jenkins-php7-magento2 devtutspace/jenkins-php7-magento2
 ## Docker Image Push command:                   docker push devtutspace/jenkins-php7-magento2
+## Docker Image Build, Tag, Push:               docker build -t jenkins-php7-magento2 ./ && docker tag jenkins-php7-magento2 devtutspace/jenkins-php7-magento2 && docker push devtutspace/jenkins-php7-magento2
